@@ -13,6 +13,13 @@ type User = {
   Birthday?: Date | null, FavoriteMovies?: any[]
 };
 
+/**
+ * @description The users profile page with their favorite movies and personal information. 
+ * @selector app-profile-page
+ * @templateUrl ./profile-page.component.html
+ * @styleUrls ./profile-page.component.scss
+ */
+
 @Component({
   selector: 'app-profile-page',
   templateUrl: './profile-page.component.html',
@@ -36,6 +43,11 @@ export class ProfilePageComponent {
     private datePipe: DatePipe
   ) { }
 
+/**
+ * 
+ * Initiates the generation of the page and gets the users information and favorite movies. 
+ */
+
   ngOnInit(): void {
     const user = this.getUser();
 
@@ -56,6 +68,10 @@ export class ProfilePageComponent {
     }
   }
 
+/**
+ * Opens the profile update componanet for the user to edit their data. 
+ */
+
   openProfileUpdateDialog(): void {
     this.dialog.open(ProfileUpdateComponent, {
       width: '280px'
@@ -66,10 +82,19 @@ export class ProfilePageComponent {
     this.router.navigate(['movies']);
   }
 
+  /**
+   * 
+   * @returns The users information stored in local storage. 
+   */
+
   getUser(): User {
     return JSON.parse(localStorage.getItem('user') || '{}');
   }
 
+  /**
+   * 
+   * @param Genre The genre of the movie displayed for the user to request more information.
+   */
   openGenre(Genre: any): void {
     this.dialog.open(MoreInfoComponent, {
       data: {
@@ -78,6 +103,11 @@ export class ProfilePageComponent {
       }
     })
   }
+
+  /**
+   * 
+   * @param Director The director of the movie displayed for the user to request more information.
+   */
 
   openDirector(Director: any): void {
     this.dialog.open(MoreInfoComponent, {
@@ -88,6 +118,11 @@ export class ProfilePageComponent {
     })
   }
 
+  /**
+   * 
+   * @param movie The description of the movie displayed for the user to request more information.
+   */
+
   openDescription(movie: any): void {
     this.dialog.open(MoreInfoComponent, {
       data: {
@@ -96,6 +131,10 @@ export class ProfilePageComponent {
       }
     })
   }
+
+/**
+ * Using locals Storage and the movies array this displays only the movies the user has favorited. 
+ */
 
   getFavoriteMovies(): void {
     if (this.user && Array.isArray(this.user.FavoriteMovies)) {
@@ -109,6 +148,12 @@ export class ProfilePageComponent {
     }
   }
 
+  /**
+   * 
+   * @param movieID The id of the movies in the users favorites. 
+   * @returns The ID of the movies that are in the users favorite movies array. 
+   */
+
   isFavorite(movieID: string): boolean {
     const userString = localStorage.getItem('user');
     if (!userString) {
@@ -118,6 +163,12 @@ export class ProfilePageComponent {
     const user = JSON.parse(userString);
     return user.FavoriteMovies.includes(movieID);
   }
+
+/**
+ * 
+ * @param movieID The id of the movies in the users favorites.
+ * @returns displays the movies in the users favorite movies array.
+ */
 
   toggleFavorite(movieID: string): void {
     const userString = localStorage.getItem('user');

@@ -23,6 +23,13 @@ const MY_DATE_FORMATS = {
   },
 };
 
+/**
+ * @description Allows the user to be able to update the information on their account. 
+ * @selector app-profile-update
+ * @templateUrl ./profile-update.component.html
+ * @styleUrls ./profile-update.component.scss
+ */
+
 @Component({
   selector: 'app-profile-update',
   templateUrl: './profile-update.component.html',
@@ -49,6 +56,11 @@ export class ProfileUpdateComponent implements OnInit {
     public snackBar: MatSnackBar
   ) { }
 
+/**
+ * 
+ * @returns Sets the users information to be used by other components. 
+ */
+
   ngOnInit(): void {
     const user = this.getUser();
 
@@ -67,9 +79,18 @@ export class ProfileUpdateComponent implements OnInit {
     }
   }
 
+/**
+ * 
+ * @returns Gets the user information stored in localStorage.
+ */
+
   getUser(): User {
     return JSON.parse(localStorage.getItem('user') || '{}');
   }
+
+  /**
+   * Sends put request to update the users information and updates it in localStorage. 
+   */
 
   editUser(): void {
     this.fetchApiData.editUser(this.userData).subscribe((result) => {
@@ -82,6 +103,10 @@ export class ProfileUpdateComponent implements OnInit {
       });
     });
   }
+
+/**
+ * Generates a popup for the user to confirm deletion of their account and delete their account.
+ */
 
   removeUser(): void {
     const confirmation = window.confirm('Are you sure you want to delete your profile?');

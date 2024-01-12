@@ -4,6 +4,13 @@ import { UserRegistrationServices } from '../fetch-api-data.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
+/**
+ * @description Allows the user to login to their account
+ * @selector app-user-login-form
+ * @templateUrl ./user-login-form.component.html
+ * @styleUrls ./user-login-form.component.scss
+ */
+
 @Component({
   selector: 'app-user-login-form',
   templateUrl: './user-login-form.component.html',
@@ -22,6 +29,10 @@ export class UserLoginFormComponent implements OnInit {
   ngOnInit(): void {
 
   }
+
+  /**
+   * This allows the user to be able to loging to their account.
+   */
 
   loginUser(): void {
     this.fetchApiData.userLogin(this.userData).subscribe((result) => {

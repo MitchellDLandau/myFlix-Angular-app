@@ -17,6 +17,13 @@ const MY_DATE_FORMATS = {
   },
 };
 
+/**
+ * @description Allows the user to sign up for an account.
+ * @selector app-user-registration-form
+ * @templateUrl ./user-registration-form.component.html
+ * @styleUrl ./user-registration-form.component.scss
+ */
+
 @Component({
   selector: 'app-user-registration-form',
   templateUrl: './user-registration-form.component.html',
@@ -37,13 +44,14 @@ export class UserRegistrationFormComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+/**
+ * Allows the user to register a new account. 
+ */
   registerUser(): void {
     this.fetchApiData.userRegistration(this.userData).subscribe((response) => {
       this.dialogRef.close();
       this.snackBar.open('User registered successfully', 'OK', {
         duration: 2000
-        //add in code to log in user automatically as well?
       });
     }, (response) => {
       this.snackBar.open(response, 'OK', {

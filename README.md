@@ -1,4 +1,5 @@
 # MyFlixAngularClient
+This is a movie application created using Angular. I used an API I have written to to access the database and store user information as well as the movies. In this application I used angular/material to help with the stylings of the application. I implimented capabilities like updating information, creating accounts, date selectors, and routing to make my application more user friendly. 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.7.
 
