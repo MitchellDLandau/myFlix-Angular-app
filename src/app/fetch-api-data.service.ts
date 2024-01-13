@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { catchError } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError, of } from 'rxjs';
-import { map, tap, switchMap } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
 const apiUrl = 'https://marvel-movie-mapper-0064171d8b92.herokuapp.com/';
 

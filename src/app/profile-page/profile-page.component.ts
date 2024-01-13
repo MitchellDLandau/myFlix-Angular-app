@@ -106,7 +106,7 @@ export class ProfilePageComponent {
 
   /**
    * 
-   * @param Director The director of the movie displayed for the user to request more information.
+   * @param Director The director of the movie displayed for the user to request a short biography.
    */
 
   openDirector(Director: any): void {
